@@ -6,7 +6,7 @@
 <title>もしも、この家庭に生まれたら</title>
 <meta name="description" content="全国の統計から作った、ある子が生まれてから親になるまでの物語です。特定非営利活動法人YORIDO">
 <meta property="og:title" content="もしも、この家庭に生まれたら">
-<meta property="og:description" content="お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる物語です。">
+<meta property="og:description" content="お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる物語です。途中で、物語の道が分かれるところがあります。">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#163472">
 <!--
@@ -41,6 +41,7 @@ body{
 a{color:var(--navy)}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+[tabindex="-1"]:focus{outline:none}
 h1,h2,.lead,.result,.story p,.card-q,.end-h,.btn,.choice{word-break:auto-phrase}
 .en{font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
 
@@ -168,6 +169,27 @@ details.more summary{cursor:pointer;color:var(--navy);font-weight:700;letter-spa
 .ask p{font-size:17px;font-weight:700;color:var(--navy);letter-spacing:.06em;line-height:1.9;margin:0 0 18px}
 .ask .give{text-align:left}
 .ask p.give-sub{font-size:13px;font-weight:400;color:var(--ink-3);letter-spacing:.04em;line-height:1.85;margin:10px 2px 0;text-align:left}
+.about{background:#F3F6FB;border:1px solid #DCE4F2}
+.about .about-t{font-size:15px;line-height:1.9;color:var(--ink);margin:0}
+.choices.fork .choice{background:#fff;border-color:var(--navy)}
+.found{display:inline-block;font-size:14px;font-weight:500;color:var(--navy);background:var(--navy-soft);border-radius:999px;padding:4px 16px;margin:0 0 18px;letter-spacing:.06em}
+.found b{font-size:inherit;font-weight:inherit}
+.end-h.sub{font-size:19px;margin-top:30px}
+.wishes.ok li{color:var(--navy)}
+.wishes .tag{display:inline-block;font-style:normal;font-size:11px;font-weight:700;color:#fff;background:var(--orange);border-radius:999px;padding:1px 10px;margin-left:8px;letter-spacing:.04em;vertical-align:2px}
+.replay{margin:0 0 28px;padding:20px 18px;background:var(--bg-2);border-radius:16px}
+.replay .replay-h{font-size:17px;font-weight:700;color:var(--navy);letter-spacing:.06em;margin:0 0 2px}
+.replay-btns{display:grid;gap:10px;margin-top:12px}
+@media (min-width:640px){.replay-btns{grid-template-columns:repeat(2,1fr)}}
+.replay-btns .btn{width:100%;min-height:52px;padding:8px 10px 8px 22px;justify-content:space-between}
+.replay-btns .btn .t{display:flex;flex-direction:column;align-items:flex-start;line-height:1.4}
+.replay-btns .btn .t small{font-size:12px;font-weight:500;letter-spacing:.04em}
+.alt{margin:28px 0 24px;padding:22px 20px;border:1px dashed var(--navy-2);border-radius:16px}
+.alt .alt-h{font-size:18px;font-weight:700;color:var(--navy);letter-spacing:.06em;margin:0 0 10px}
+.alt ul{list-style:none;padding:0;margin:0 0 12px}
+.alt li{display:flex;gap:14px;font-size:15px;line-height:1.8;color:var(--ink-3);padding:6px 0;border-bottom:1px solid var(--line)}
+.alt li .a{flex:none;width:3.4em;font-weight:700}
+.alt p{font-size:15px;line-height:1.9;margin:0 0 4px}
 .acts{display:grid;gap:14px;margin:18px 0 26px;padding:0;list-style:none}
 @media (min-width:640px){.acts{grid-template-columns:repeat(3,1fr)}}
 .acts img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block;margin:0 0 12px;background:#EEE}
@@ -250,8 +272,8 @@ var IMG = {
 
 /* ===== 出典（すべて一次資料で照合済み） ===== */
 var SRC = {
-  kokumin: "厚生労働省「2025（令和7）年 国民生活基礎調査の概況」（2026年7月）。数字は2024年の所得",
-  naikaku: "内閣府「令和3年 子供の生活状況調査の分析 報告書」。全国の中学2年生とその保護者への調査（2021年2〜3月）",
+  kokumin: "厚生労働省「2025（令和7）年 国民生活基礎調査の概況」（2026年7月）。数値は2024年の所得",
+  naikaku: "内閣府「令和3年 子供の生活状況調査の分析 報告書」。全国の中学⁠2年生とその保護者への調査（2021年2〜3月）",
   cfc: "公益社団法人チャンス・フォー・チルドレン「2026年 子どもの教育機会に関する実態調査」（2026年8月）。全国の保護者へのWEB調査。世帯年収は税込の自己申告",
   hogo: "厚生労働省 社会・援護局保護課「生活保護世帯の子どもの進学率等の経過」（令和7年4月1日時点）",
   chingin: "厚生労働省「令和7年 賃金構造基本統計調査 結果の概況」（2026年3月）第10表「新規学卒者の性、学歴別賃金」（男女計）",
@@ -263,15 +285,15 @@ var LOW = "収入が低い世帯";          // 内閣府：等価世帯収入が
 var MID = "収入が中央値以上の世帯";     // 内閣府：中央値以上
 var POOR = "年収300万円未満の世帯"; // CFC
 var RICH = "年収600万円以上の世帯";     // CFC
-var OYA = "中学2年生の子どもがいる世帯の保護者に、過去1年間の状況をたずねた調査です。";
-var KO = "中学2年生本人への調査です。";
+var OYA = "中学⁠2年生の子どもがいる世帯の保護者に、過去1年間の状況をたずねた調査です。";
+var KO = "中学⁠2年生本人への調査です。";
 var DEF_NAIKAKU = "「収入が低い世帯」は、世帯人数で調整した年収（等価世帯収入）が、回答世帯の中央値の2分の1未満の世帯です。比較対象は「収入が中央値以上の世帯」です。年収は2019年の税込額で、調査は2021年2〜3月（新型コロナウイルス感染症の流行期）に行われました。";
 var WHO_CFC = "小学生の子どもがいる保護者を対象とした別の調査（2026年）です。世帯年収（税込）で区分しています。";
 
 /* ===== 状態 ===== */
 var REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 var state;
-function reset(){ state = { i:0, picks:{}, wishes:[] }; }
+function reset(){ state = { i:0, picks:{}, wishes:[], met:{} }; }
 reset();
 
 /* ===== 部品 ===== */
@@ -308,13 +330,48 @@ function nextHTML(label){
 }
 
 /* ===== 場面 =====
-   choices  [{ label:ボタン, key:短い呼び名 }]（ある場面だけ）
-   react(c) 選んだあとのお母さんの反応（文の配列）
-   result(c) 「〜したかった。でも、できなかった。」
-   wish(c)  最後の一覧に載せる文
-   ok       できた場面（高校）
-   card(c)  数字のカード
+   場面（scene）の項目
+     kind         "start" か "final"（開始と最後のページ）
+     variant()    それまでに選んだことに応じて、title・body・prompt・react・result・wish などを差し替える
+     bodyFn()     本文を、それまでに選んだことに応じて作る
+     choicesFn()  選択肢を、それまでに選んだことに応じて作る
+     choices      [{ label, key, met, ok, react(), result(), done, alt }]（選ぶ場面だけ）
+                  met  … 分かれ道で、支援と出会う側の印（food / lesson / exp / learn / juku）
+                  ok   … 「できた」側か
+                  done … 最後のページの「やりたかった → できた」の後半（出会う側だけ）
+                  alt  … 最後のページの「もし、支援と出会っていなかったら」の行（出会う側だけ）
+     result(c)    太字の結び
+     wish(c)      最後のページの一覧に載せる文（分かれ道の場面は持たない。最後のページは FORKS で組み立てる）
+     ok           「できた」場面か
+     linked       支援と出会えた道の「できた」（最後のページで「支援と出会って」の印を付ける）
+     altFn(c)     linked の場面の「もし」の行
+     card(c)      数字のカード（分かれ道では cardOnFork のときだけ出す）
 */
+function pick(id){ return state.picks[id] || {}; }
+function keyOf(id, def){ return pick(id).key || def; }
+/* 支援と出会ったか。印を別に持たず、選んだこと（picks）から毎回求める（やり直しても、ずれない） */
+function met(k){
+  for (var id in state.picks) if (state.picks[id] && state.picks[id].met === k) return true;
+  return false;
+}
+/* その分かれ道で、出会う側を選んでいれば、その選択肢 */
+function metAt(id){ var c = state.picks[id]; return c && c.met ? c : null; }
+function val(x){ return typeof x === "function" ? x() : x; }
+
+/* カードの共通の文（範囲の外の OYA・DEF_NAIKAKU・WHO_CFC は、もう使わない） */
+var DEF_LOW = "この物語で収入が低い世帯と呼んでいるのは、世帯人数で調整した年収（等価世帯収入）が、回答世帯の中央値の2分の1未満の世帯です。比べているのは、収入が中央値以上の世帯です。年収は2019年の税込額で、調査は2021年2〜3月（新型コロナウイルス感染症の流行期）に行われました。";
+var WHO_SHO = "小学生の子どもがいる家庭への、別の調査（2026年）です。世帯年収（税込）で区分しています。";
+var HOGO = "生活保護を受けている家の子";
+/* 10歳の夏に出会えた道：その夏の1行（10歳）と、思い出す1行（22歳） */
+var SUMMER = {
+  "海":{ day:"夏の終わり、初めて海に入りました。足元で、波が光っていました。",
+         later:"10歳の夏に見た光る波を、今度は、お母さんにも見せたいと思っています。" },
+  "キャンプ":{ day:"夏の終わり、初めてテントで眠りました。空には、数え切れないほどの星がありました。",
+         later:"10歳の夏に見た数え切れないほどの星を、今度は、お母さんにも見せたいと思っています。" },
+  "遊園地":{ day:"夏の終わり、初めて観覧車に乗りました。てっぺんから、自分の町が小さく見えました。",
+         later:"10歳の夏に乗った観覧車に、今度は、お母さんと一緒に乗りたいと思っています。" }
+};
+
 var SCENES = [
   { id:"start", kind:"start" },
 
@@ -322,15 +379,15 @@ var SCENES = [
     title:"あなたは、この家に生まれました。",
     body:[
       "経済的に余裕のない家庭です。",
-      "家族の人数を考慮すると、使えるお金は、全国の中央値の半分にも届きません。"
+      "家族一人あたりで比べると、使えるお金は、全国の真ん中の家庭の半分にも届きません。"
     ],
     card:function(){
-      return '<section class="card" aria-label="実際の数字"><p class="label en">Data</p>'
-        + '<p class="card-q">日本の子どもの<b>約9人に1人（11.0%）</b>が、相対的貧困の状態にあります。</p>'
-        + '<div class="nine" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>'
+      return "<section class=\"card\" aria-label=\"実際の数字\"><p class=\"label en\">Data</p>"
+        + "<p class=\"card-q\">日本の子どもの<b>約9人に1人（11.0%）</b>が、相対的貧困の状態にあります。</p>"
+        + "<div class=\"nine\" aria-hidden=\"true\"><i class=\"on\"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>"
         + moreHTML([
-            "ここでの「経済的に余裕のない家庭」は、世帯の可処分所得を世帯人数で調整した額が、全国の中央値の半分（貧困線。2024年の所得で138万円）に届かない世帯です。",
-            "子どもの貧困率 11.0%（17歳以下・2024年の所得。2025年調査、2026年7月公表）。前回の調査（2022年調査・2021年の所得）の11.5%から0.5ポイント下がりました。" ], SRC.kokumin)
+            "この物語で経済的に余裕のない家庭と呼んでいるのは、世帯の可処分所得を世帯人数で調整した額が、全国の中央値の半分（貧困線。2024年の所得で138万円）に届かない世帯です。",
+            "子どもの貧困率 11.0%（17歳以下・2024年の所得。2025年調査、2026年7月公表）。前回の調査（2022年調査・2021年の所得）では、11.5%でした。" ], SRC.kokumin)
         + "</section>";
     }
   },
@@ -339,36 +396,62 @@ var SCENES = [
     title:"月の終わりの、夕ご飯。",
     body:[
       "テーブルには、パンが一つだけ。",
-      "お母さんは、「お母さんはお腹へってないから大丈夫だよ」と言って、何も食べませんでした。",
+      "お母さんは、「お腹へってないから大丈夫だよ」と言って、何も食べませんでした。",
       "パンは、あなたの分でした。それでも、お腹は、まだ鳴っています。"
     ],
-    result:function(){ return "お腹いっぱい、食べたかった。でも、できませんでした。"; },
+    result:function(){ return "お腹いっぱい、食べたかった。"; },
     wish:function(){ return "お腹いっぱい、食べたかった"; },
     card:function(){
       return cardHTML({
-        q:OYA + "経済的な理由で、家族が必要とする食料を買えなかったことがある世帯の割合",
+        q:"中学⁠2年生の子どもがいる世帯の保護者に、過去1年間の状況を尋ねた調査です。経済的な理由で、家族が必要とする食料を買えなかったことがある世帯の割合",
         rows:[[LOW, 37.7], [MID, 1.9, "off"]],
-        notes:[ "「よくあった」「ときどきあった」「まれにあった」を合わせた割合。37.7%（337人）と1.9%（1,316人）。", DEF_NAIKAKU ],
+        notes:[ "「よくあった」「ときどきあった」「まれにあった」を合わせた割合です。", DEF_LOW ],
         src:SRC.naikaku + "（p.26）" });
     }
+  },
+
+  { id:"a5d", age:"5歳", en:"Age 05", fork:true,
+    title:"保育園の、掲示板。",
+    body:[
+      "お迎えのとき、掲示板に、1枚のチラシが貼ってありました。",
+      "「こども食堂、やっています。どなたでも、どうぞ」",
+      "お母さんは、チラシの前で少し足を止めました。",
+      "あなたは、お母さんの手を握ったまま、チラシを見上げました。",
+      "スーパーが閉まる時間が、近づいていました。"
+    ],
+    prompt:"その日の帰り道は？",
+    choices:[
+      { label:"チラシを写真に撮って、行ってみる", key:"see", met:"food", ok:true,
+        react:function(){ return [
+          "次の土曜日、お母さんと一緒に、近くの公民館へ行ってみました。",
+          "お母さんは、入口で一度立ち止まりました。チラシの「どなたでも」に背中を押されるように、扉を開けました。",
+          "地域の大人たちが、温かいご飯を用意して、待っていてくれました。",
+          "それから、月に何度か、そこでご飯を食べるようになりました。" ]; },
+        result:function(){ return "お腹いっぱい食べられる日が、増えました。"; },
+        done:"お腹いっぱい食べられる日が、増えた",
+        alt:"月の終わりは、お腹をすかせたままだった" },
+      { label:"今日は、買い物を急ぐ", key:"pass",
+        react:function(){ return [
+          "お母さんは、あなたの手を握り直して、スーパーへ急ぎました。",
+          "あなたが振り返ると、チラシは、もう見えませんでした。" ]; } }
+    ]
   },
 
   { id:"a6", age:"6歳", en:"Age 06",
     title:"小学校に入りました。",
     body:[
-      "クラスの皆は、新しい物を身に着けています。",
+      "クラスのみんなは、新しい物を身に着けています。",
       "あなたの物は、親戚のお下がりばかり。靴のつま先には、小さな穴が開いています。"
     ],
-    prompt:"あなたが、欲しかった物は？",
-    choices:[ { label:"新しい服", key:"新しい服" }, { label:"新しい靴", key:"新しい靴" }, { label:"皆と同じ、新しいかばん", key:"新しいかばん" } ],
+    prompt:"あなたが欲しい物は？",
+    choices:[ { label:"新しい服", key:"新しい服" }, { label:"新しい靴", key:"新しい靴" }, { label:"新しいランドセル", key:"新しいランドセル" } ],
     react:function(c){ return [ "お母さんに、「" + c.key + "が欲しい」と言ってみました。", "お母さんは、「もう少し、待ってね」と言いました。", "あなたは、うなずくことしかできませんでした。" ]; },
-    result:function(c){ return c.key + "が、欲しかった。でも、買ってもらえませんでした。"; },
     wish:function(c){ return c.key + "が、欲しかった"; },
     card:function(){
       return cardHTML({
-        q:OYA + "経済的な理由で、家族が必要とする衣服を買えなかったことがある世帯の割合",
+        q:"同じ調査です。経済的な理由で、家族が必要とする衣服を買えなかったことがある世帯の割合",
         rows:[[LOW, 45.8], [MID, 4.2, "off"]],
-        notes:[ "「よくあった」「ときどきあった」「まれにあった」を合わせた割合。45.8%（337人）と4.2%（1,317人）。調査が聞いたのは「衣服」で、靴やかばんについては、聞いていません。", DEF_NAIKAKU ],
+        notes:[ "「よくあった」「ときどきあった」「まれにあった」を合わせた割合です。調査が聞いたのは「衣服」で、靴やランドセルについては聞いていません。", DEF_LOW ],
         src:SRC.naikaku + "（p.27）" });
     }
   },
@@ -383,19 +466,45 @@ var SCENES = [
     prompt:"あなたは、何を習いたい？",
     choices:[ { label:"スイミング", key:"スイミング" }, { label:"サッカー", key:"サッカー" }, { label:"ピアノ", key:"ピアノ" } ],
     react:function(c){ return [ "お母さんに、「" + c.key + "を習いたい」と言ってみました。", "お母さんは、少し黙ってから、「今は、難しいんだ」と言いました。", "あなたは、それ以上は言いませんでした。" ]; },
-    result:function(c){ return c.key + "を、習いたかった。でも、できませんでした。"; },
     wish:function(c){ return c.key + "を、習いたかった"; },
-    card:function(){
+    card:function(c){
+      var art = !!(c && c.key === "ピアノ");
       return cardHTML({
-        q:"子どもが希望する学校外の学習や体験を「十分に実現できていない」と感じることがある保護者のうち、理由に経済的な余裕のなさを挙げた割合",
+        q:"子どもが希望する学校外の学習や体験を「十分に実現できていない」と感じることがある、と答えた親に理由を聞くと、お金の余裕がないことを挙げたのは――",
         rows:[[POOR, 75.7], [RICH, 28.3, "off"]],
-        who:WHO_CFC,
+        who:WHO_SHO,
         notes:[
-          "設問は「お子様が『やりたい』と希望する学校以外での学習や体験活動について、十分に実現できていないと感じることはありますか」。「よくある」「時々ある」と答えた家に聞いた理由（複数回答）。選択肢の原文は「保護者に経済的な余裕がないから」で、75.7%（456人）と28.3%（502人）。",
-          RICH + "で一番多い理由は「保護者に時間的な余裕がないから（送迎、付き添いなど）」61.2%。",
-          "スポーツの習い事・クラブに通っている小学生は、" + POOR + "で40.0%、" + RICH + "で63.4%（p.32）。" ],
+          "設問は「お子様が『やりたい』と希望する学校以外での学習や体験活動について、十分に実現できていないと感じることはありますか」。「よくある」「時々ある」と答えた親に聞いた理由（複数回答）です。選択肢の原文は「保護者に経済的な余裕がないから」です。",
+          art ? "文化芸術の活動（音楽・科学・プログラミングなども含む）に、定期的に参加している小学生は、" + POOR + "で17.3%、" + RICH + "で33.4%（p.32）。"
+              : "スポーツの習い事・クラブに通っている小学生は、" + POOR + "で40.0%、" + RICH + "で63.4%（p.32）。" ],
         src:SRC.cfc + "（p.32・p.52）" });
     }
+  },
+
+  { id:"a8d", age:"8歳", en:"Age 08", fork:true,
+    title:"その夜の、スマホの画面。",
+    bodyFn:function(){ return [
+      "お母さんが、スマホで何かを調べていました。",
+      "画面には、「習い事 月謝 助成」という文字が見えました。",
+      "お母さんも、" + keyOf("a8", "習い事") + "のことを、考えてくれていたのです。",
+      "その横顔は、とても疲れて見えました。"
+    ]; },
+    prompt:"あなたは、どうする？",
+    choices:[
+      { label:"隣に座って、一緒に画面を見てみる", key:"see", met:"lesson", ok:true,
+        react:function(){ return [
+          "隣に座ると、お母さんは、画面をあなたにも見せてくれました。",
+          "見つけたのは、子どもの習い事の月謝を、一部助成してくれる仕組みでした。",
+          "次の日、お母さんは、申し込みの書類を取りに行ってくれました。",
+          "初めての日、あなたは、約束の時間よりずっと早く、玄関で待っていました。" ]; },
+        result:function(){ return keyOf("a8", "習い事") + "を、習い⁠始めました。"; },
+        done:"習い始められた",
+        alt:function(){ return keyOf("a8", "習い事") + "は、習えないままだった"; } },
+      { label:"今夜は、そっとしておく", key:"pass",
+        react:function(){ return [
+          "あなたは、そっと布団に入りました。",
+          "次の日も、その次の日も、お母さんの帰りは遅く、あの画面を一緒に見る時間はありませんでした。" ]; } }
+    ]
   },
 
   { id:"a9", age:"9歳", en:"Age 09",
@@ -403,15 +512,15 @@ var SCENES = [
     body:[
       "宿題をしていたら、急に、部屋が真っ暗になりました。",
       "その月は、電気代を払うお金が足りなかったのです。",
-      "ストーブも点きません。あなたは、布団にくるまって、朝を待ちました。"
+      "ストーブもつきません。あなたは、お母さんと一緒に布団にくるまって、朝を待ちました。"
     ],
-    result:function(){ return "暖かい部屋で、宿題をしたかった。でも、できませんでした。"; },
+    result:function(){ return "暖かい部屋で、宿題をしたかった。"; },
     wish:function(){ return "暖かい部屋で、宿題をしたかった"; },
     card:function(){
       return cardHTML({
-        q:OYA + "経済的な理由で、電気料金が未払いになったことがある世帯の割合",
+        q:"5歳・6歳の場面と同じ調査です。経済的な理由で、電気料金が未払いになったことがある世帯の割合",
         rows:[[LOW, 14.5], [MID, 0.7, "off"]],
-        notes:[ "電気料金が経済的な理由で未払いになったことがあった家。14.5%（338人）と0.7%（1,318人）。電気・ガス・水道のどれか1つ以上なら、20.7%と0.9%。実際に止められたかどうかは、この調査では分かりません。", DEF_NAIKAKU ],
+        notes:[ "電気料金が経済的な理由で未払いになったことがあった家の割合です。電気・ガス・水道のどれか1つ以上なら、20.7%と0.9%。実際に止められたかどうかは、この調査では分かりません。", DEF_LOW ],
         src:SRC.naikaku + "（p.28–29）" });
     }
   },
@@ -421,82 +530,140 @@ var SCENES = [
     body:[
       "教室は、夏休みの話で持ち切りです。",
       "「キャンプに行くんだ」「海に行くよ」",
-      "あなたも、どこかへ行ってみたい。"
+      "あなたも、どこかへ行ってみたいと思いました。"
     ],
     prompt:"あなたは、どこへ行きたい？",
     choices:[ { label:"海", key:"海" }, { label:"キャンプ", key:"キャンプ" }, { label:"遊園地", key:"遊園地" } ],
-    react:function(c){ return [ "お母さんに、「" + c.key + "に行きたい」と言ってみました。", "「今年は、どこにも行けそうにないんだ」", "夏休みが明けて、「夏の思い出」を書く時間。あなたの鉛筆は、止まったままでした。" ]; },
-    result:function(c){ return c.key + "に、行きたかった。でも、行けませんでした。"; },
+    react:function(c){ return [ "お母さんに、「" + c.key + "に行きたい」と言ってみました。", "「今年は、どこにも行けそうにないんだ」" ]; },
     wish:function(c){ return c.key + "に、行きたかった"; },
-    card:function(){
+    card:function(c){
+      var notes = [ "学校外の体験活動（定期的なスポーツ・文化芸術・地域活動と、単発の自然体験・社会体験・文化的体験）に、1年間一つも参加していない小学生は、" + POOR + "で24.8%、" + RICH + "で8.8%でした（p.31）。" ];
+      if (c && c.key === "遊園地") notes.push("あなたが選んだ遊園地は、自然体験には入っていません。");
       return cardHTML({
-        q:"過去1年間に、学校外の体験活動（スポーツや習い事、キャンプ、旅行、博物館、お祭りなど）に一度も参加しなかった小学生の割合",
-        rows:[[POOR, 24.8], [RICH, 8.8, "off"]],
-        who:WHO_CFC,
-        notes:[ "学校の外の体験活動（定期的なスポーツ・文化芸術・地域活動と、単発の自然体験・社会体験・文化的体験）に、1年間一つも参加していない小学生。24.8%（936人）と8.8%（1,043人）。" ],
-        src:SRC.cfc + "（p.16・p.31）" });
+        q:"学校外の体験活動のうち、自然体験（山・川・海での遊び、キャンプ、スキーなど）に参加した小学生の割合",
+        rows:[[POOR, 31.6], [RICH, 54.3, "off"]],
+        who:WHO_SHO,
+        notes:notes,
+        src:SRC.cfc + "（p.16・p.31・p.32）" });
     }
+  },
+
+  { id:"a10d", age:"10歳", en:"Age 10", fork:true,
+    title:"終業式の日の、お知らせ。",
+    bodyFn:function(){ return [
+      "学校で、1枚のお知らせが配られました。",
+      "「子どもの夏の体験、費用を応援します」",
+      keyOf("a10", "どこか") + "に行けるかもしれない、と思いました。",
+      "その夜、お母さんは、遅くまで洗濯物を畳んでいました。"
+    ]; },
+    prompt:"あなたは、どうする？",
+    choices:[
+      { label:"お母さんに、お知らせを渡す", key:"see", met:"exp", ok:true,
+        react:function(){
+          var m = SUMMER[pick("a10").key];
+          return [ "「これ、もらったんだ」と、お知らせを渡しました。", "お母さんは、手を止めて読むと、「行っておいで」と笑いました。" ].concat(m ? [ m.day ] : []); },
+        result:function(){ return keyOf("a10", "どこか") + "に、行けました。"; },
+        done:"行けた",
+        alt:function(){ return keyOf("a10", "どこか") + "には、行けないままだった"; } },
+      { label:"お母さんが忙しそうで、渡⁠し⁠そ⁠び⁠れ⁠る", key:"pass",
+        react:function(){ return [
+          "お知らせは、かばんの底に入ったままでした。",
+          "夏休みが明けて、「夏の思い出」を書く時間。あなたの鉛筆は、止まったままでした。" ]; } }
+    ]
   },
 
   { id:"a13", age:"13歳", en:"Age 13",
     title:"中学生になりました。",
     body:[
-      "数学の授業が、段々分からなくなってきました。",
+      "数学の授業が、段々分から⁠なくなってきました。",
       "お母さんは、夜遅くまで仕事です。",
       "分からないところを、聞ける人がいません。"
     ],
-    result:function(){ return "授業が、分かるようになりたかった。でも、できませんでした。"; },
     wish:function(){ return "授業が、分かるようになりたかった"; },
     card:function(){
       return cardHTML({
         q:KO + "学校の授業が「わからないことが多い」「ほとんどわからない」と答えた割合",
         rows:[[LOW, 24.0], [MID, 7.3, "off"]],
-        notes:[ "24.0%（337人）と7.3%（1,315人）。", DEF_NAIKAKU ],
+        notes:[ DEF_LOW ],
         src:SRC.naikaku + "（p.64）" });
     }
   },
 
-  { id:"a13b", age:"13歳", en:"Age 13", ok:true,
-    title:"塾に、行ってみたい。",
-    body:[
-      "テストが返ってきました。数学は、また平均より下でした。",
-      "前の席の子が、「ここ、塾でやったところだ」とつぶやきました。"
-    ],
-    prompt:"あなたは、どうする？",
-    choices:[ { label:"お母さんに、塾に行きたいと言ってみる", key:"mama" }, { label:"担任の先生に、相談してみる", key:"sensei" } ],
-    react:function(c){
-      return c.key === "mama"
-        ? [ "お母さんに、「塾に行きたい」と言ってみました。", "お母さんは、塾の料金を調べて、しばらく黙っていました。", "数日後、担任の先生が、月謝を割引してくれる塾があると教えてくれました。", "数学だけなら、通えることになりました。" ]
-        : [ "担任の先生に、相談してみました。", "先生は、月謝を割引してくれる塾があると教えてくれました。", "お母さんと話して、数学だけ、通えることになりました。" ];
+  { id:"a13b", age:"13歳", en:"Age 13", fork:true, cardOnFork:true,
+    title:"帰り道の、駅の掲示板。",
+    bodyFn:function(){
+      var b = [
+        "テストが返ってきました。数学は、また平均より下でした。",
+        "友達は、駅で待ち合わせて、塾へ向かいます。あなたも、本当は、塾に行ってみたいと思っていました。",
+        "駅の掲示板に、1枚のチラシが貼ってありました。",
+        "「中学生・高校生の勉強、無料で教えます。大学生のボランティアと一緒に」"
+      ];
+      if (met("lesson")) b.push("ふと、8歳の夜に、お母さんの隣で見たスマホの画面を思い出しました。", "家に帰ったら、今度は自分で、「塾 費用 助成」と調べてみようか。");
+      else b.push("家に帰ったら、塾の費用を助けてくれる仕組みがないか、スマホで調べてみようか、とも思いました。");
+      b.push("でも、部活のあとは急いで帰って、家のことをする毎日です。");
+      return b;
     },
-    result:function(){ return "塾に、通えるようになりました。"; },
-    wish:function(){ return "塾に、通えた"; },
+    prompt:"あなたは、どうする？",
+    choicesFn:function(){ return [
+      { label:"チラシの教室に、行ってみる", key:"learn", met:"learn", ok:true,
+        react:function(){ return [
+          met("food") ? "チラシに書かれた場所は、5歳の頃からご飯を食べに通っている、あの公民館でした。" : "行ってみると、そこは、地域の公民館で開かれている、無料の学習支援教室でした。",
+          "お母さんに話すと、その夜、申込書に名前を書いてくれました。",
+          "土曜日の午後、大学生のボランティアに、分からないところを聞けるようになりました。" ]; },
+        result:function(){ return "授業が、少しずつ分\u2060か\u2060る\u2060よ\u2060う\u2060に\u2060な\u2060り\u2060ま\u2060し\u2060た。"; },
+        done:"分かるまで聞ける人ができた",
+        alt:"授業は、分からないままだった" },
+      { label:"スマホで、塾の費用の助成を調べてみる", key:"juku", met:"juku", ok:true,
+        react:function(){
+          var r = [ "調べると、塾の費用を一部助成してくれる仕組みがありました。" ];
+          if (met("lesson")) r.push("お母さんに画面を見せると、あの夜のように、隣に座ってくれました。");
+          r.push("お母さんと話して、まずは数学だけ、と決めました。");
+          return r; },
+        result:function(){ return "数学だけ、塾に通えるようになりました。"; },
+        done:"数学だけは、塾で教えてもらえた",
+        alt:"塾には、通えないままだった" },
+      { label:"今は、ほかのことで精一杯", key:"none",
+        react:function(){ return [ "その日も、急いで家に帰りました。", "チラシのことも、調べてみようと思ったことも、思い出す余裕はありませんでした。" ]; } }
+    ]; },
     card:function(){
       return cardHTML({
         q:KO + "ふだんの勉強の仕方として「塾で勉強する」と答えた割合",
         rows:[[LOW, 28.7], [MID, 56.4, "off"]],
-        notes:[ "「ふだんの勉強の仕方」で「塾で勉強する」を選んだ子。28.7%（334人）と56.4%（1,310人）（複数回答）。", DEF_NAIKAKU ],
+        notes:[ "「ふだんの勉強の仕方」で「塾で勉強する」を選んだ子の割合です（複数回答）。", DEF_LOW ],
         src:SRC.naikaku + "（p.59–60）" });
     }
   },
 
   { id:"a14a", age:"14歳", en:"Age 14",
     title:"来年は、受験です。",
-    body:[
-      "塾のおかげで、数学は、少し分かるようになってきました。",
-      "でも、ほかの教科も、苦手です。"
-    ],
-    prompt:"あなたは、何の教科を増やしたい？",
+    variant:function(){
+      if (met("learn")) return {
+        body:[ "教室に通い始めて、1年がたちました。", "数学は、少しずつ分かるようになってきました。でも、ほかの教科も、不安です。" ],
+        prompt:"教室の大学生に、何を相談する？",
+        react:function(c){ return [ "「実は、" + c.key + "も不安なんです」", "大学生のボランティアは、うなずいて、" + c.key + "も、一緒に見てくれるようになりました。" ]; },
+        result:function(c){ return c.key + "も不安だと、話せました。"; },
+        wish:function(c){ return c.key + "も不安だと、相談できた"; },
+        ok:true, linked:true };
+      if (met("juku")) return {
+        body:[ "塾に通い始めて、数学は、少し分かるようになってきました。", "でも、ほかの教科も、苦手です。" ],
+        prompt:"あなたは、何の教科を増やしたい？",
+        react:function(c){ return [ c.key + "も、塾で習いたい。", "でも、教科を増やすと、月謝も増えます。", "夜遅く帰ってきたお母さんの顔を見ると、言⁠い⁠出⁠せませんでした。" ]; },
+        result:function(c){ return c.key + "も、習いたかった。"; },
+        wish:function(c){ return c.key + "も、塾で習いたかった"; } };
+      return {
+        body:[ "数学は、分からないままです。", "受験の年が、近づいてきました。" ],
+        prompt:"あなたは、何の教科が不安？",
+        react:function(c){ return [ c.key + "も、誰かに教えてほしい。", "でも、塾に行くお金がないことは、分かっていました。" ]; },
+        result:function(c){ return c.key + "も、教えてもらいたかった。"; },
+        wish:function(c){ return c.key + "も、誰かに教えてもらいたかった"; } };
+    },
     choices:[ { label:"英語", key:"英語" }, { label:"理科", key:"理科" }, { label:"社会", key:"社会" } ],
-    react:function(c){ return [ c.key + "も、塾で習いたい。", "でも、教科を増やすと、月謝も増えます。", "夜遅く帰ってきたお母さんの顔を見ると、言⁠い⁠出⁠せませんでした。" ]; },
-    result:function(c){ return c.key + "も、習いたかった。でも、言⁠い⁠出⁠せませんでした。"; },
-    wish:function(c){ return c.key + "も、塾で習いたかった"; },
     card:function(){
       return cardHTML({
-        q:"受験期に、学習塾や家庭教師などの学校外の学習活動に参加していた中学3年生の割合",
+        q:"受験期に、学習塾や家庭教師などの学校外の学習活動に参加していた中学⁠3年生の割合",
         rows:[[POOR, 36.8], [RICH, 70.9, "off"]],
-        who:"中学3年生の子どもがいる保護者を対象とした別の調査（2026年）です。世帯年収（税込）で区分しています。",
-        notes:[ "学習塾・家庭教師・オンライン学習などの学校外の学習活動に参加していた中学3年生。36.8%（193人）と70.9%。" ],
+        who:"中学⁠3年生の子どもがいる家庭への、別の調査（2026年）です。世帯年収（税込）で区分しています。",
+        notes:[ "学習塾・家庭教師・オンライン学習などの学校外の学習活動に参加していた中学⁠3年生の割合です。" ],
         src:SRC.cfc + "（p.16・p.42）" });
     }
   },
@@ -504,38 +671,48 @@ var SCENES = [
   { id:"a14", age:"14歳", en:"Age 14",
     title:"大会に向けて。",
     body:[
-      "部活の大会が、近づいてきました。",
-      "顧問の先生から、道具やユニフォームのプリントが配られました。色々な金額が書いてあります。"
+      "部活の大会や発表会が、近づいてきました。",
+      "顧問の先生から、そろえる道具のプリントが配られました。色々な金額が書いてあります。"
     ],
     prompt:"あなたの部活は？",
-    choices:[ { label:"バスケットボール部", key:"バスケットボール部", gear:"新しいバスケットシューズとユニフォーム" }, { label:"吹奏楽部", key:"吹奏楽部", gear:"自分の楽器" }, { label:"美術部", key:"美術部", gear:"新しい絵の具と筆のセット" } ],
-    react:function(c){ return [ c.key + "で、毎日練習しています。", "周りの子は、" + c.gear + "を買ってもらっていました。", "あなたは、先輩のお下がりを使っています。", "お母さんに「欲しい」とは、言⁠い⁠出⁠せませんでした。" ]; },
-    result:function(c){ return c.gear + "を、買ってもらいたかった。でも、言⁠い⁠出⁠せませんでした。"; },
+    choices:[
+      { label:"バスケットボール部", key:"バスケットボール部", gear:"新しいバスケットシューズとユニフォーム",
+        daily:"バスケットボール部で、毎日、練習しています。", mine:"あなたは、先輩のお下がりを使っています。" },
+      { label:"吹奏楽部", key:"吹奏楽部", gear:"自分の楽器", others:"周りには、自分の楽器を買ってもらった子もいます。",
+        daily:"吹奏楽部で、毎日、合奏の練習をしています。", mine:"あなたは、学校の古い楽器を借りています。" },
+      { label:"美術部", key:"美術部", gear:"新しい絵の⁠具と筆のセット",
+        daily:"美術部で、毎日、絵を描いています。", mine:"あなたは、先輩が置いていった絵の⁠具を、少しずつ使っています。" }
+    ],
+    react:function(c){ return [ c.daily, (c.others || "周りの子は、" + c.gear + "を買ってもらっています。"), c.mine, "お母さんを困らせたくなくて、「欲しい」とは言⁠い⁠出⁠せませんでした。" ]; },
+    result:function(c){ return c.gear + "を、買ってもらいたかった。"; },
     wish:function(c){ return c.gear + "を、買ってもらいたかった"; },
     card:function(){
       return cardHTML({
-        q:"部⁠活動には費用がかかります。" + KO + "部⁠活動や地域のクラブに参加していない生徒のうち、理由に「費用がかかるから」を挙げた割合",
+        q:"部⁠活動には費用がかかります。" + KO + "部⁠活動や地域のクラブに参加していない子のうち、理由に「費用がかかるから」を挙げた割合",
         rows:[[LOW, 19.2], [MID, 5.0, "off"]],
-        extra:"「家の事情(家族の世話、家事など)があるから」を挙げた割合は、" + LOW + "で9.0%、" + MID + "で2.5%でした。",
-        notes:[ "入っていない子（" + LOW + " 78人、" + MID + " 161人）に聞いた理由（複数回答）。「費用がかかるから」19.2%と5.0%、「家の事情(家族の世話、家事など)があるから」9.0%と2.5%。答えた人数が少ないので、幅を持って見てください。", "一番多い理由は「入りたいクラブ・部活動がないから」（39.7%と47.8%）でした。", DEF_NAIKAKU ],
+        notes:[
+          "参加していない子（" + LOW + " 78人、" + MID + " 161人）に聞いた理由（複数回答）です。答えた人数が少ないので、幅を持って見てください。",
+          "「家の事情(家族の世話、家事など)があるから」は、9.0%と2.5%。一番多い理由は「入りたいクラブ・部活動がないから」（39.7%と47.8%）でした。",
+          DEF_LOW ],
         src:SRC.naikaku + "（p.76–77）" });
     }
   },
 
   { id:"a15", age:"15歳", en:"Age 15", ok:true,
     title:"高校に、合格しました。",
-    body:[
-      "高校には、行けることになりました。",
-      "制服、かばん、教科書。そろえる物が、たくさんあります。",
-      "入学したら、アルバイトをして、家にお金を入れるつもりです。"
-    ],
+    bodyFn:function(){
+      var b = [ "春から、高校生です。" ];
+      if (met("food")) b.push("公民館のご飯の日に合格を伝えると、地域の大人たちが、拍手をしてくれました。");
+      b.push("制服、かばん、教科書。そろえる物が、たくさんあります。", "入学したら、アルバイトをして、家にお金を入れるつもりです。");
+      return b;
+    },
     result:function(){ return "高校には、行けました。"; },
     wish:function(){ return "高校に、行けた"; },
     card:function(){
       return cardHTML({
         q:"生活保護を受けている家の子でも、ほとんどが高校などに進むことができています。",
-        rows:[["生活保護受給世帯の子ども", 92.0]],
-        who:"国が集計した、高等学校等への進学率です。この物語の世帯とは区分が異なります。",
+        rows:[[HOGO, 92.0]],
+        who:"国が集計した、高等学校等への進学率です。物語の家庭が生活保護を受けているという意味ではありません。",
         notes:[ "生活保護を受けている家の子の、高等学校等への進学率。" ],
         src:SRC.hogo });
     }
@@ -546,51 +723,89 @@ var SCENES = [
     body:[ "先生に、「どこまで学びたい？」と聞かれました。" ],
     prompt:"あなたは、本当は？",
     choices:[ { label:"大学で学びたい", key:"大学" }, { label:"専門学校で学びたい", key:"専門学校" } ],
-    react:function(){ return [ "でも、口から出たのは、「働こうと思います」でした。", "家のお金のことが、頭に浮⁠か⁠ん⁠だからです。" ]; },
-    result:function(c){ return "本当は、" + c.key + "で学びたかった。でも、言えませんでした。"; },
-    wish:function(c){ return c.key + "で学びたいと、言いたかった"; },
+    variant:function(){
+      if (met("learn") || met("juku")) return {
+        react:function(c){ return [ met("learn") ? "学習支援教室の大学生と、何度も話してきたことでした。" : "塾の先生には、本当の気持ちを話したことがありました。", "「" + c.key + "で、学びたいです」", "口に出してみると、声は、思ったより落ち着いていました。" ]; },
+        result:function(c){ return c.key + "で学びたいと、言えました。"; },
+        wish:function(c){ return c.key + "で学びたいと、言えた"; },
+        ok:true, linked:true, altFn:function(c){ return c.key + "で学びたいと、言えないままだった"; } };
+      return {
+        react:function(){ return [ "でも、口から出たのは、「働こうと思います」でした。", "家のお金のことが、頭に浮⁠か⁠ん⁠だからです。" ]; },
+        result:function(c){ return "本当は、" + c.key + "で学びたかった。でも、言えませんでした。"; },
+        wish:function(c){ return c.key + "で学びたいと、言いたかった"; } };
+    },
     card:function(){
       return cardHTML({
         q:KO + "進学希望について「大学またはそれ以上」と答えた割合",
         rows:[[LOW, 28.0], [MID, 64.3, "off"]],
-        extra:LOW + "で「高校まで」と答えた生徒の理由は、「家にお金がないと思うから」が15.6%、「早く働く必要があるから」が14.7%でした。",
-        notes:[ "「大学またはそれ以上」28.0%（336人）と64.3%（1,310人）。", LOW + "で「高校まで」と答えた子（109人）の理由は、「家にお金がないと思うから」15.6%、「早く働く必要があるから」14.7%（複数回答）。他の理由（「自分の成績から考えて」など）を選んだ子もいます。", DEF_NAIKAKU ],
+        extra:LOW + "で「高校まで」と答えた子の理由は、「家にお金がないと思うから」が15.6%、「早く働く必要があるから」が14.7%でした。",
+        notes:[ LOW + "で「高校まで」と答えた子（109人）に聞いた理由（複数回答）です。ほかの理由（「自分の成績から考えて」など）を選んだ子もいます。", DEF_LOW ],
         src:SRC.naikaku + "（p.67・p.70–71）" });
     }
   },
 
   { id:"a18", age:"18歳", en:"Age 18",
     title:"高校卒業の春です。",
-    bodyFn:function(){
-      var k = state.picks.a16 ? state.picks.a16.key : "大学";
-      return [
-        "担任の先生は、「" + k + "を目指してみたら」と言ってくれました。",
-        "でも、入学のお金も、毎年の学費も、あなたの家には出せません。",
-        "お金を借りることも考えました。でも、返していけるか、怖くなりました。",
-        "返さなくていいお金があることは、その時は、知りませんでした。"
-      ];
+    variant:function(){
+      var k = keyOf("a16", "大学");
+      if (met("learn") || met("juku")) return {
+        body:[
+          "入学のお金も、毎年の学費も、あなたの家には出せません。",
+          met("learn") ? "高校⁠3年生になったばかりの頃、教室の大学生と一緒に、国の制度を調べていました。返さなくていい奨学金と、授業料の減免です。"
+                       : "高校⁠3年生になったばかりの頃、中学で通っていた塾の先生を訪ねていました。先生が教えてくれたのは、国の制度でした。返さなくていい奨学金と、授業料の減免です。",
+          "奨学金の申し込みは、高校の先生に教わりながら、お母さんと一緒に、締め切りまでに済ませていました。",
+          "入学金は、進学先に相談して、支払いを待ってもらえることになりました。"
+        ],
+        result:function(){ return "春から、" + k + "で学びます。"; },
+        wish:function(){ return k + "に、進学できた"; },
+        ok:true, linked:true, altFn:function(){ return k + "には、行けなかった"; } };
+      return {
+        body:[
+          "担任の先生は、「" + k + "を目指してみたら」と言ってくれました。",
+          "でも、入学のお金も、毎年の学費も、あなたの家には出せません。",
+          "お金を借りることも考えました。でも、返していけるか、怖くなりました。",
+          "返さなくていいお金があることは、その時は、知りませんでした。"
+        ],
+        result:function(){ return k + "で、学びたかった。でも、行けませんでした。春から、働き始めます。"; },
+        wish:function(){ return k + "で、学びたかった"; } };
     },
-    result:function(){ var k = state.picks.a16 ? state.picks.a16.key : "大学"; return k + "で、学びたかった。でも、行けませんでした。春から、働き始めます。"; },
-    wish:function(){ var k = state.picks.a16 ? state.picks.a16.key : "大学"; return k + "で、学びたかった"; },
     card:function(){
-      var univ = !state.picks.a16 || state.picks.a16.key === "大学";
+      var univ = keyOf("a16", "大学") === "大学";
       return cardHTML({
-        q: univ ? "生活保護受給世帯の子どもの、大学・短大への進学率" : "生活保護受給世帯の子どもの、専修学校・各種学校への進学率",
-        rows:[["生活保護受給世帯の子ども", univ ? 23.6 : 16.2]],
-        who:"国が集計した、高校卒業直後の進学率です。全世帯の数値とは集計方法が異なるため、比較していません。",
-        notes:[ "大学・短大 23.6%、専修学校・各種学校 16.2%。", "卒業した次の年までに、大学・短大・専門学校などへ進んだ人まで含めると、44.7%になります。", "大学や専門学校には、返さなくてよい奨学金や、授業料の減免（高等教育の修学支援新制度）もあります。" ],
+        q: univ ? "生活保護を受けている家の子の、大学・短大への進学率" : "生活保護を受けている家の子の、専修学校（専門学校など）・各種学校への進学率",
+        rows:[[HOGO, univ ? 23.6 : 16.2]],
+        who:"国が集計した、生活保護を受けている家の子の、高校卒業直後の進学率です。物語の家庭が生活保護を受けているという意味ではありません。全世帯の数値とは数え方が違うので、並べていません。",
+        notes:[
+          "大学・短大 23.6%、専修学校・各種学校 16.2%。",
+          "卒業した次の年までに、大学・短大・専門学校などへ進んだ人まで含めると、44.7%になります。",
+          "国や自治体の確認を受けた大学や専門学校には、高等教育の修学支援新制度に⁠よる、返さなくていい奨学金（給付型）と、授業料・入学金の減免があります。受けられるかは、家の収入や資産などの条件と、成績か学ぶ意欲の確認で決まります。奨学金と減免は、高校⁠3年生のうちに高校を通じて一緒に申し込む方法が中心で、入学後に進学先でも手続きをします。",
+          "給付型の奨学金は入学してから支給が始まるので、入学前に払うお金には使えません。入学金は、いったん払って減免の分があとから戻る場合と、進学先が支払いを待ってくれる場合があります。" ],
         src:SRC.hogo });
     }
   },
 
   { id:"a22", age:"22歳", en:"Age 22",
-    title:"働いて、4年が経ちました。",
-    body:[ "高校を出てから、ずっと働いています。お給料の一部は、毎月、家に入れています。", "この春、同い年の友達が、大学を出て、働き始めました。", "初めのお給料を聞いて、あなたは、黙ってしまいました。" ],
+    variant:function(){
+      var k = keyOf("a16", "大学");
+      var m = met("exp") ? SUMMER[pick("a10").key] : null;
+      var v;
+      if (met("learn") || met("juku")) v = k === "大学"
+        ? { title:"働き始めました。", body:[ "大学を出て、この春、働き始めました。", "初めてのお給料で、お母さんに、夕ご飯をごちそうしました。" ] }
+        : { title:"働いて、3年目になりました。", body:[ "専門学校で学んだことを、毎日の仕事で使っています。", "初めてのお給料で、お母さんに、夕ご飯をごちそうした日のことを、今も覚えています。" ] };
+      else v = { title:"働いて、4年がたちました。", body:[
+        "高校を出てから、ずっと働いています。お給料の一部は、毎月、家に入れています。",
+        "この春、同い年の友達が、大学を出て、働き始めました。",
+        "友達の初めてのお給料の話を聞きながら、あなたは、4年前のことを思い出していました。",
+        "初めてのお給料で、お母さんに、小さなケーキを買って帰った日のことです。" ] };
+      if (m) v.body.push(m.later);
+      return v;
+    },
     card:function(){
       var rows = [["高校を卒業",207.3,"約20.7万円"],["専門学校を卒業",230.7,"約23.1万円"],["高専・短大を卒業",235.5,"約23.6万円"],["大学を卒業",262.3,"約26.2万円"]];
-      return '<section class="card" aria-label="実際の数字"><p class="label en">Data</p><p class="card-q">働き始めた年の、1か月のお給料（学歴別の平均）</p><div class="rows">'
-        + rows.map(function(r, k){ return '<div class="row' + (k === 0 ? "" : " off") + '"><div class="rh"><span class="rl">' + r[0] + '</span><span class="val"><b style="font-size:20px">' + r[2] + '</b></span></div><div class="tb"><div class="fill" data-w="' + Math.round(r[1] / 262.3 * 100) + '%"></div></div></div>'; }).join("")
-        + '</div><p class="card-who">家計の違いではなく、学歴の違いによる平均です。</p>'
+      var mine = !(met("learn") || met("juku")) ? 0 : (keyOf("a16", "大学") === "大学" ? 3 : 1);
+      return "<section class=\"card\" aria-label=\"実際の数字\"><p class=\"label en\">Data</p><p class=\"card-q\">働き始めた年の、1か月のお給料（学歴別の平均）</p><div class=\"rows\">"
+        + rows.map(function(r, k){ return "<div class=\"row" + (k === mine ? "" : " off") + "\"><div class=\"rh\"><span class=\"rl\">" + r[0] + (k === mine ? "（あなた）" : "") + "</span><span class=\"val\"><b style=\"font-size:20px\">" + r[2] + "</b></span></div><div class=\"tb\"><div class=\"fill\" data-w=\"" + Math.round(r[1] / 262.3 * 100) + "%\"></div></div></div>"; }).join("")
+        + "</div><p class=\"card-who\">この数値は、育った家の収入で分けたものではなく、学歴ごとの平均です。</p>"
         + moreHTML([ "高校卒は18歳頃、大学卒は22歳頃の、働き始めた年の額です（2025年6月分。税金などを引く前の額で、残業代・ボーナスは含みません）。" ], SRC.chingin)
         + "</section>";
     }
@@ -600,14 +815,14 @@ var SCENES = [
     title:"あなたに、こどもが生まれました。",
     body:[ "小さな手が、あなたの指を、ぎゅっと握りました。", "この子には、やりたいことを、やらせてあげたい。" ],
     card:function(){
-      return '<section class="card" aria-label="調査"><p class="label en">Data</p>'
-        + '<p class="card-q">子どもの頃に家が苦しかった人は、大人になっても、暮らしに困りやすいことが、調査で分かっています。</p>'
-        + '<p class="card-extra" style="border:0;padding-top:0;margin-top:0">でも、そうならない人も、たくさんいます。</p>'
+      return "<section class=\"card\" aria-label=\"調査\"><p class=\"label en\">Data</p>"
+        + "<p class=\"card-q\">子どもの頃に家が苦しかった人は、大人になっても、暮らしに困りやすいことが、調査で分かっています。</p>"
+        + "<p class=\"card-extra\" style=\"border:0;padding-top:0;margin-top:0\">でも、そうならない人も、たくさんいます。</p>"
         + moreHTML([
-            "全国の20〜69歳、約1万7千人の調査（2007年）。「暮らしに困る」は、この1年に食べ物や服に困った、病院に行くのを我慢した、暮らしが苦しいと感じている、のことです。",
+            "全国の20〜69歳の人への調査です。ここでは、論文の「生活困難（デプリベーション）」を、暮らしに困ると言い⁠換えています。この1年に食べ物や服に困った、病院に行くのを我⁠慢した、暮らしが苦しいと感じている、といった状態です。",
             "20〜49歳の人では、学歴や仕事とは別に、子どもの頃の苦しさそのものが、今の暮らしにつながっていました。上の世代（50〜69歳）では、多くの人が、働いたり家族を持ったりする中で、苦しさから抜け出していました。" ], SRC.abe)
         + "</section>"
-        + '<p class="result ok" style="margin-top:34px">あなたのこどもの人生はこれから始まります。</p>';
+        + "<p class=\"result ok\" style=\"margin-top:34px\">あなたのこどもの人生はこれから始まります。</p>";
     },
     nextLabel:"最後のページへ"
   },
@@ -615,87 +830,164 @@ var SCENES = [
   { id:"final", kind:"final" }
 ];
 
+/* 4つの分かれ道（最後のページの組み立てと、やり直しのボタンに使う）
+   pre … 分かれ道の前の場面（「やりたかった」の願いを持つ場面） */
+var FORKS = [
+  { id:"a5d",  pre:"a5",  age:"5歳",  place:"保育園の掲示板" },
+  { id:"a8d",  pre:"a8",  age:"8歳",  place:"お母さんのスマホ" },
+  { id:"a10d", pre:"a10", age:"10歳", place:"学校のお知らせ" },
+  { id:"a13b", pre:"a13", age:"13歳", place:"帰り道" }
+];
+
+/* 場面に、状態ごとの差し替え（variant）を重ねる */
+function resolve(base){
+  var v = base.variant ? base.variant() : null;
+  var s = {};
+  for (var k in base) s[k] = base[k];
+  if (v) for (var k2 in v) s[k2] = v[k2];
+  if (base.choicesFn) s.choices = base.choicesFn();
+  return s;
+}
+
 /* ===== 進みぐあい ===== */
 var TOTAL = SCENES.length - 1;
 function setTop(){ document.getElementById("barFill").style.width = Math.round(state.i / TOTAL * 100) + "%"; }
 
 /* ===== 画面を描く ===== */
 var app = document.getElementById("app");
+var CUR = null;
 function go(i){
+  while (SCENES[i] && SCENES[i].skip && SCENES[i].skip()) i++;
   state.i = i;
-  var s = SCENES[i];
+  var s = SCENES[i].kind ? SCENES[i] : resolve(SCENES[i]);
+  CUR = s;
   setTop();
   var html = s.kind === "start" ? startHTML() : s.kind === "final" ? finalHTML() : sceneHTML(s);
-  app.innerHTML = '<div class="scene">' + html + "</div>";
+  app.innerHTML = "<div class=\"scene\">" + html + "</div>";
   window.scrollTo(0, 0);
   var h = app.querySelector("h1,h2"); if (h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
   bind(s);
 }
 
 function startHTML(){
-  return '<p class="label en">A story from the data</p>'
+  return "<p class=\"label en\">A story from the data</p>"
     + "<h1>もしも、この家庭に生まれたら</h1>"
-    + '<p class="lead">これは、全国の統計から作った、ある子が生まれてから親になるまでの物語です。あなたの家のことではありません。</p>'
-    + '<ol class="how">'
-    + '<li><span class="n en">01</span><span>あなたは、経済的に余裕のない家庭に生まれた子どもとして、0歳から30歳までを歩みます。</span></li>'
-    + '<li><span class="n en">02</span><span>途中で何度か、その子が「やりたい」と思ったことを選んでいただきます。</span></li>'
-    + '<li><span class="n en">03</span><span>各場面のあとに、全国調査の実際の数値を示します。</span></li>'
+    + "<p class=\"lead\">これは、全国の統計から作った、ある子が生まれてから親になるまでの物語です。あなたの家のことではありません。</p>"
+    + "<ol class=\"how\">"
+    + "<li><span class=\"n en\">01</span><span>あなたは、経済的に余裕のない家庭に生まれた子どもとして、0歳から30歳までを歩みます。</span></li>"
+    + "<li><span class=\"n en\">02</span><span>途中で何度か、あなたが「やりたい」と思ったことや、次にどうするかを選びます。物語の中には、道が分かれるところがあります。</span></li>"
+    + "<li><span class=\"n en\">03</span><span>多くの場面のあとに、全国調査の実際の数値を示します。</span></li>"
     + "</ol>"
-    + '<div class="next-wrap"><button class="btn btn-main btn-wide" id="begin">物語をはじめる' + arw() + "</button></div>";
+    + "<div class=\"next-wrap\"><button class=\"btn btn-main btn-wide\" id=\"begin\">物語を始める" + arw() + "</button></div>";
 }
 
 function sceneHTML(s){
   var body = s.bodyFn ? s.bodyFn() : (s.body || []);
-  var h = '<p class="label en">' + s.en + '</p><div class="age">' + s.age + "</div>"
-    + "<h2>" + s.title + '</h2><div class="story">' + body.map(function(p){ return "<p>" + p + "</p>"; }).join("") + "</div>";
+  var h = "<p class=\"label en\">" + s.en + "</p><div class=\"age\">" + s.age + "</div>"
+    + "<h2>" + s.title + "</h2><div class=\"story\">" + body.map(function(p){ return "<p>" + p + "</p>"; }).join("") + "</div>";
   if (s.choices){
-    h += '<p class="prompt">' + s.prompt + "</p>"
-      + '<div class="choices">' + s.choices.map(function(c, k){ return '<button class="choice" data-k="' + k + '"><span>' + esc(c.label) + "</span>" + arw() + "</button>"; }).join("") + "</div>"
-      + '<div id="after" hidden></div>';
+    h += "<p class=\"prompt\">" + s.prompt + "</p>"
+      + "<div class=\"choices" + (s.fork ? " fork" : "") + "\">" + s.choices.map(function(c, k){ return "<button class=\"choice\" data-k=\"" + k + "\"><span>" + esc(c.label) + "</span>" + arw() + "</button>"; }).join("") + "</div>"
+      + "<div id=\"after\" hidden></div>";
   } else {
-    h += '<div id="after">' + afterHTML(s, null) + "</div>";
+    h += "<div id=\"after\">" + afterHTML(s, null) + "</div>";
   }
   return h;
 }
+function pickFn(c, s, name){ return (c && c[name]) || s[name]; }
+function isOk(s, c){ return c && c.ok !== undefined ? c.ok : !!s.ok; }
 function afterHTML(s, c){
   var out = "";
-  if (c && s.react) out += '<div class="react">' + s.react(c).map(function(p){ return "<p>" + p + "</p>"; }).join("") + "</div>";
-  if (s.result) out += '<p class="result' + (s.ok ? " ok" : "") + '">' + s.result(c) + "</p>";
-  if (s.card) out += s.card(c);
+  var react = pickFn(c, s, "react"), result = pickFn(c, s, "result");
+  if (c && react) out += "<div class=\"react\">" + react(c).map(function(p){ return "<p>" + p + "</p>"; }).join("") + "</div>";
+  if (result) out += "<p class=\"result" + (isOk(s, c) ? " ok" : "") + "\">" + result(c) + "</p>";
+  if (s.card && !(s.fork && !s.cardOnFork)) out += s.card(c);
   out += nextHTML(s.nextLabel);
   return out;
 }
+/* 最後のページの一覧に載せる願いを、場面の id ごとに1件だけ残す */
 function logWish(s, c){
-  if (!s.wish) return;
   state.wishes = state.wishes.filter(function(w){ return w.id !== s.id; });
-  state.wishes.push({ id:s.id, age:s.age, text:s.wish(c), ok:!!s.ok });
+  var wish = pickFn(c, s, "wish");
+  if (!wish) return;
+  state.wishes.push({ id:s.id, age:s.age, text:wish(c), ok:isOk(s, c), tag:!!s.linked, alt:s.altFn ? s.altFn(c) : null });
 }
 
 function giveHTML(){
-  return '<a class="give" href="' + LINKS.shien + '" target="_blank" rel="noopener"><span class="gt">毎月の寄付で支える<b>月1,000円から</b></span><span class="arw" aria-hidden="true">→</span></a>'
-    + '<p class="give-sub">1回のみのご寄付も承っています。外部の寄付サイト（Syncable）に移動します。</p>';
+  return "<a class=\"give\" href=\"" + LINKS.shien + "\" target=\"_blank\" rel=\"noopener\"><span class=\"gt\">毎月の寄付で支える<b>月1,000円から</b></span><span class=\"arw\" aria-hidden=\"true\">→</span></a>"
+    + "<p class=\"give-sub\">1回のみのご寄付も承っています。外部の寄付サイト（Syncable）に移動します。</p>";
 }
 function finalHTML(){
-  var list = state.wishes.filter(function(w){ return !w.ok; }).map(function(w){ return '<li><span class="a">' + w.age + "</span><span>" + w.text + "</span></li>"; }).join("");
-  return '<div class="final">'
-    + '<p class="label en">Your wishes</p>'
-    + '<h2 class="end-h">あなたが、やりたかったのに、できなかったこと。</h2>'
-    + '<ul class="wishes">' + list + "</ul>"
-    + "<p>この物語は、全国の統計をもとにした創作です。登場する子どもと家族は架空の人物で、各場面の数値は実際の調査結果です。数値は集団の傾向を示すもので、一⁠人⁠ひ⁠と⁠りの将来を決めるものではありません。</p>"
-    + '<section class="hero"><img src="' + IMG.cover + '" alt=""><div class="hero-in"><p class="hero-h">やりたいことを、<br>諦めなくて⁠い⁠い⁠よ⁠う⁠に。</p><p class="hero-s">周りの大人にも、できることがあります。</p></div></section>'
+  var byId = {}, forkOf = {}, ok = [], ng = [], alts = [], found = 0;
+  state.wishes.forEach(function(w){ byId[w.id] = w; });
+  FORKS.forEach(function(f){ forkOf[f.pre] = f; if (metAt(f.id)) found++; });
+  /* 場面の順に1回だけ見る。出会えた分かれ道の前の願いは「できたこと」に対の1行で出し、「できなかったこと」には出さない */
+  SCENES.forEach(function(sc){
+    var w = byId[sc.id], f = forkOf[sc.id], c = f ? metAt(f.id) : null;
+    if (c){
+      ok.push({ age:f.age, pre:w ? w.text : "", text:val(c.done), tag:true });
+      alts.push({ age:f.age, text:val(c.alt) });
+    } else if (w && w.ok){
+      ok.push({ age:w.age, text:w.text, tag:w.tag });
+      if (w.alt) alts.push({ age:w.age, text:w.alt });
+    } else if (w){
+      ng.push({ age:w.age, text:w.text });
+    }
+  });
+  var li = function(w){
+    return "<li><span class=\"a\">" + w.age + "</span><span>"
+      + (w.pre ? "<span class=\"small muted\">" + w.pre + "</span><br><b><span aria-hidden=\"true\">→ </span>" + w.text + "</b>" : w.text)
+      + (w.tag ? "<em class=\"tag\">支援と出会って</em>" : "") + "</span></li>";
+  };
+  var h = "<div class=\"final\">"
+    + "<p class=\"label en\">Your story</p>"
+    + "<p class=\"found\">支援と出会えた分かれ道：<b>" + found + "</b> / 4</p>";
+  if (ok.length) h += "<h2 class=\"end-h\">あなたの人生で、できた⁠こと。</h2><ul class=\"wishes ok\">" + ok.map(li).join("") + "</ul>";
+  if (ng.length) h += "<h2 class=\"end-h\" style=\"margin-top:34px\">やりたかったのに、できなかったこと。</h2><ul class=\"wishes\">" + ng.map(li).join("") + "</ul>";
+  if (found){
+    h += "<section class=\"alt\"><p class=\"alt-h\">もし、支援と出会っていなかったら。</p><ul>"
+      + alts.map(function(w){ return "<li><span class=\"a\">" + w.age + "</span><span>" + w.text + "</span></li>"; }).join("") + "</ul>"
+      + "<p>" + (found === FORKS.length
+        ? "物語のあなたは、支援と出会えました。でも、出会えないまま大人になる子もいます。それは、その子や親のせいではありません。だから、支援のほうから、家庭に届く仕組みが要ります。"
+        : "物語のあなたには、支援と出会えた分かれ道も、出会えなかった分かれ道もありました。出会えなかったのは、あなたやお母さんのせいではありません。だから、支援のほうから、家庭に届く仕組みが要ります。")
+      + "</p></section>";
+  } else {
+    h += "<section class=\"alt\"><p class=\"alt-h\">出会えなかったのは、あなたやお母さんのせいではありません。</p>"
+      + "<p>保育園の掲示板のチラシ、お母さんのスマホの画面、学校のお知らせ、駅の掲示板のチラシ。あなたの人生にも、支援と出会う分かれ道がありました。でも、気づいていても、動く余裕がない日もあります。だから、支援のほうから、家庭に届く仕組みが要ります。</p></section>";
+  }
+  h += "<p class=\"small muted\">これは物語の中の道です。実際には、支援と出会わなくても進学する子も、出会っても進学できない子もいます。</p>"
+    + "<p>この物語は、全国の統計をもとにした創作です。登場する子どもと家族は架空の人物です。各場面の数値は実際の調査結果で、集団の傾向を示すものであり、一⁠人⁠ひ⁠と⁠りの将来を決めるものではありません。物語に出てくる支援は、一般的な仕組みとして描いたものです。地域によって、あるかどうかも、内容や年齢などの条件も違います。</p>"
+    + "<section class=\"hero\"><img src=\"" + IMG.cover + "\" alt=\"\"><div class=\"hero-in\"><p class=\"hero-h\">やりたいことを、<br>諦めなくて⁠い⁠い⁠よ⁠う⁠に。</p><p class=\"hero-s\">周りの大人にも、できることがあります。</p></div></section>"
     + giveHTML()
-    + '<section class="sec"><p class="label en">For Supporters</p><h3 class="sec-h">ご寄付が支える、YORIDOの活動</h3>'
-    + '<ul class="acts">'
+    + "<section class=\"sec\"><p class=\"label en\">For Supporters</p><h3 class=\"sec-h\">ご寄付が支える、YORIDOの活動</h3>"
+    + "<ul class=\"acts\">"
     +   "<li><img src=\"" + IMG.food + "\" alt=\"\"><b>食のお届けのご案内</b><span>地域のこども食堂やフードバンクと協働して、食のお届けをご案内しています。</span></li>"
     +   "<li><img src=\"" + IMG.naraigoto + "\" alt=\"\"><b>習い⁠事応援ステーション</b><span>月謝の減免にご協力いただける「パートナー教室」と、ご家庭をつなぐ仕組みを整えています。</span></li>"
     +   "<li><img src=\"" + IMG.learn + "\" alt=\"\"><b>学習支援</b><span>中高生と週に一度オンラインで話し、目標と今週やることを、一緒に整理します。</span></li>"
-    + "</ul>"
-    + "</section>"
-    + '<div class="ask"><p>こどもたちの「やりたい」を、<br>周りの大人で支えていくために。</p>' + giveHTML() + "</div>"
-    + '<div class="two" style="margin:28px auto 0;max-width:420px;grid-template-columns:1fr"><button class="btn btn-sub" id="share"><span class="t">このページを共有する<small>リンクをコピー・共有できます</small></span>' + arw() + "</button></div>"
-    + '<p class="legal">運営：特定非営利活動法人YORIDO（理事長 洞雞真人）<br>公式サイト：<a href="https://yorido.com/" target="_blank" rel="noopener">https://yorido.com/</a>　お問い合わせ：<a href="mailto:npo@yorido.info">npo@yorido.info</a></p>'
-    + '<div class="next-wrap"><button class="btn btn-sub btn-wide" id="again">もう一度、最初から読む' + arw() + "</button></div>"
+    + "</ul></section>"
+    + "<div class=\"ask\"><p>こどもたちの「やりたい」を、<br>周りの大人で支えていくために。</p>" + giveHTML() + "</div>"
+    + "<div class=\"two\" style=\"margin:28px auto 0;max-width:420px;grid-template-columns:1fr\"><button class=\"btn btn-sub\" id=\"share\"><span class=\"t\">このページを共有する<small>リンクをコピー・共有できます</small></span>" + arw() + "</button></div>"
+    + "<p class=\"legal\">運営：特定非営利活動法人YORIDO（理事長 洞雞真人）<br>公式サイト：<a href=\"https://yorido.com/\" target=\"_blank\" rel=\"noopener\">https://yorido.com/</a>　お問い合わせ：<a href=\"mailto:npo@yorido.info\">npo@yorido.info</a></p>"
+    + "<section class=\"replay\" style=\"margin:34px 0 0\"><p class=\"replay-h\">分かれ道から、もう一度</p><p class=\"small\">物語の中では、分かれ道に戻れます。戻った分かれ道より前に選んだことは、そのまま残ります。</p><div class=\"replay-btns\">"
+    + FORKS.map(function(f){ return "<button class=\"btn btn-sub replay-b\" data-fork=\"" + f.id + "\"><span class=\"t\">" + f.age + "<small>" + f.place + "</small><small>" + (metAt(f.id) ? "出会えた" : "出会えなかった") + "</small></span>" + arw() + "</button>"; }).join("")
+    + "</div></section>"
+    + "<div class=\"next-wrap\"><button class=\"btn btn-sub btn-wide\" id=\"again\">もう一度、最初から読む" + arw() + "</button></div>"
     + "</div>";
+  return h;
+}
+
+/* ===== 分かれ道に戻る（それより前の選択は残す） ===== */
+function rewindTo(id){
+  var idx = -1;
+  for (var i = 0; i < SCENES.length; i++) if (SCENES[i].id === id) { idx = i; break; }
+  if (idx < 0) return;
+  var before = {};
+  for (var j = 0; j < idx; j++) before[SCENES[j].id] = true;
+  var picks = {};
+  for (var k in state.picks) if (before[k]) picks[k] = state.picks[k];
+  /* 出会えたかは picks から求めるので、met は空の入れ物だけ残す（範囲の外の bind が書き込むため） */
+  state = { i:0, picks:picks, wishes:state.wishes.filter(function(w){ return before[w.id]; }), met:{} };
+  go(idx);
 }
 
 /* ===== 操作 ===== */
@@ -707,6 +999,7 @@ function bind(s){
   if (s.kind === "final"){
     document.getElementById("share").addEventListener("click", share);
     document.getElementById("again").addEventListener("click", function(){ reset(); go(0); });
+    app.querySelectorAll("[data-fork]").forEach(function(b){ b.addEventListener("click", function(){ rewindTo(b.getAttribute("data-fork")); }); });
     return;
   }
   if (!s.choices){ logWish(s, null); wireNext(); animateBars(app); return; }
@@ -720,6 +1013,7 @@ function bind(s){
       buttons.forEach(function(o){ o.classList.add("done"); if (o !== b) o.classList.add("dim"); o.setAttribute("aria-disabled","true"); });
       b.classList.add("chosen");
       state.picks[s.id] = c;
+      if (c.met) state.met[c.met] = true;
       logWish(s, c);
       after.innerHTML = afterHTML(s, c);
       after.hidden = false;
@@ -747,7 +1041,7 @@ function share(){
   // 公開先（https）では今のURLを渡す。ローカルの確認中はURLがないので知らせるだけ
   if (!/^https?:$/.test(location.protocol)){ toast("公開後に、このボタンから共有できるようになります"); return; }
   var url = location.origin + location.pathname;
-  var data = { title:"もしも、この家庭に生まれたら", text:"お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる物語です。", url:url };
+  var data = { title:"もしも、この家庭に生まれたら", text:"お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる物語です。途中で、物語の道が分かれるところがあります。", url:url };
   if (navigator.share){ navigator.share(data).catch(function(){}); return; }
   var showBox = function(){
     var box = document.getElementById("shareBox");
