@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>もしも、この家庭に生まれたら</title>
+<title>ある子の、0歳から30歳まで。｜全国の統計をもとにした創作</title>
 <meta name="description" content="全国の統計から作った、ある子が生まれてから親になるまでの物語です。特定非営利活動法人YORIDO">
-<meta property="og:title" content="もしも、この家庭に生まれたら">
-<meta property="og:description" content="お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる物語です。途中で、物語の道が分かれるところがあります。">
+<meta property="og:title" content="ある子の、0歳から30歳まで。｜全国の統計をもとにした創作">
+<meta property="og:description" content="お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる、創作の物語です。途中で、物語の道が分かれるところがあります。">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#163472">
 <!--
-  もしも、この家庭に生まれたら
+  ある子の、0歳から30歳まで。（全国の統計をもとにした創作）
   運営：特定非営利活動法人YORIDO
   外部ライブラリ・外部フォントなし。入力なし。Cookie・保存・送信なし。
 -->
@@ -70,6 +70,8 @@ h1{font-size:30px;line-height:1.6}
 h2{font-size:24px;line-height:1.7}
 p{margin:0 0 16px}
 .lead{font-size:18px;font-weight:700;color:var(--ink);line-height:2}
+.h1-sub{display:block;margin-top:12px;font-size:15px;font-weight:700;line-height:1.7;letter-spacing:.08em;color:var(--navy)}
+.lead-note{display:block;margin-top:14px;font-size:15px;font-weight:400;line-height:1.9;letter-spacing:.03em;color:var(--ink-2)}
 .rule{width:56px;height:1px;background:var(--ink-3);border:0;margin:26px 0}
 .story p{font-size:18px;margin:0 0 6px;color:var(--ink)}
 .small{font-size:14px;line-height:1.9}
@@ -455,7 +457,7 @@ details.more summary{padding:4px 0;font-size:14px;font-weight:700;letter-spacing
 <body>
 <header class="top" aria-label="物語の進み具合">
   <div class="top-in">
-    <div class="top-title">もしも、この家庭に生まれたら</div>
+    <div class="top-title">ある子の、0歳から30歳まで。</div>
     <a class="top-give" id="topGive" href="#" target="_blank" rel="noopener">月500円から寄付する<span class="a" aria-hidden="true">▶</span></a>
   </div>
   <div class="bar"><i id="barFill"></i></div>
@@ -1097,8 +1099,8 @@ function go(i){
 
 function startHTML(){
   return "<p class=\"label en\">A story from the data</p>"
-    + "<h1>もしも、この家庭に生まれたら</h1>"
-    + "<p class=\"lead\">これは、全国の統計から作った、ある子が生まれてから親になるまでの物語です。あなたの家のことではありません。</p>"
+    + "<h1>ある子の、0歳から30歳まで。<span class=\"h1-sub\">全国の統計をもとにした創作</span></h1>"
+    + "<p class=\"lead\">これは、全国の統計から作った、ある子が生まれてから親になるまでの物語です。あなたの家のことではありません。<span class=\"lead-note\">登場する子どもと家族は、架空の人物です。</span></p>"
     + "<ol class=\"how\">"
     + "<li><span class=\"n en\">01</span><span>あなたは、経済的に余裕のない家庭に生まれた子どもとして、0歳から30歳までを歩みます。</span></li>"
     + "<li><span class=\"n en\">02</span><span>途中で何度か、あなたが「やりたい」と思ったことや、次にどうするかを選びます。物語の中には、道が分かれるところがあります。</span></li>"
@@ -1267,7 +1269,7 @@ function share(){
   // 公開先（https）では今のURLを渡す。ローカルの確認中はURLがないので知らせるだけ
   if (!/^https?:$/.test(location.protocol)){ toast("公開後に、このボタンから共有できるようになります"); return; }
   var url = location.origin + location.pathname;
-  var data = { title:"もしも、この家庭に生まれたら", text:"お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる物語です。途中で、物語の道が分かれるところがあります。", url:url };
+  var data = { title:"ある子の、0歳から30歳まで。｜全国の統計をもとにした創作", text:"お腹いっぱい食べたい。習い事をしたい。大学で学びたい。経済的に余裕のない家庭に生まれた子どもの「やりたかったのに、できなかった」を、全国調査の数値とともにたどる、創作の物語です。途中で、物語の道が分かれるところがあります。", url:url };
   if (navigator.share){ navigator.share(data).catch(function(){}); return; }
   var showBox = function(){
     var box = document.getElementById("shareBox");
